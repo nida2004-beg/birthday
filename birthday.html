@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Our Thathatha ☁️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-color: #fdfaf5;
+  --accent: #d4a373;
+  --rose: #e89aa6;
+  --sage: #a3b18a;
+  --text: #5c5c5c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Lora', serif;
+  background-color: var(--bg-color);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ===== COMMON PAGE ===== */
+.page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 1.2s cubic-bezier(0.4,0,0.2,1);
+  padding: 20px;
+  text-align: center;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+  filter: blur(8px);
+}
+
+/* ===== FLOATING DECOR ===== */
+.floating {
+  position: absolute;
+  pointer-events: none;
+  animation: floatUp var(--dur) linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(110vh) rotate(0deg); }
+  100% { transform: translateY(-20vh) rotate(360deg); }
+}
+
+/* ===== PAGE 1 ===== */
+#page1 {
+  z-index: 10;
+}
+
+.polaroid-wrapper {
+  position: relative;
+}
+
+.polaroid-glow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(232,154,166,0.35), transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
+.polaroid-card {
+  background: white;
+  padding: 15px 15px 45px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  border: 1px solid #eee;
+  transform: rotate(-2deg);
+  cursor: pointer;
+}
+
+.image-placeholder {
+  width: 230px;
+  height: 230px;
+  background: #fff4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 58px;
+  color: var(--rose);
+  animation: heartGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes heartGlow {
+  0% { transform: scale(1); filter: drop-shadow(0 0 4px #e89aa6); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 14px #e89aa6); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 4px #e89aa6); }
+}
+
+/* ===== PAGE 2 ===== */
+#page2 { opacity: 0; pointer-events: none; }
+#page2.show { opacity: 1; pointer-events: all; }
+
+.sisters-chat {
+  display: flex;
+  gap: 26px;
+  margin-bottom: 22px;
+}
+
+.sister {
+  font-size: 42px;
+  animation: sway 3s infinite alternate;
+}
+
+@keyframes sway {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+/* ===== CAKE ===== */
+.cake-section {
+  margin-top: 35px;
+  cursor: pointer;
+}
+
+.cake {
+  width: 120px;
+  height: 70px;
+  background: #fff0f3;
+  border-radius: 10px;
+  position: relative;
+  margin: auto;
+}
+
+.candle-box {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 36px;
+}
+
+.candle-body {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--accent),
+    var(--accent) 5px,
+    #ffd1dc 5px,
+    #ffd1dc 10px
+  );
+}
+
+.flame {
+  width: 14px;
+  height: 22px;
+  background: #ffb74d;
+  border-radius: 50%;
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.6s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: translateX(-50%) scale(1); }
+  to { transform: translateX(-50%) scale(1.15); }
+}
+
+/* ===== PAGE 3 ===== */
+#page3 { opacity: 0; pointer-events: none; }
+#page3.show { opacity: 1; pointer-events: all; }
+
+.envelope-btn {
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+.credit {
+  margin-top: 36px;
+  font-family: 'Playfair Display';
+  font-style: italic;
+  color: var(--rose);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7b4a3d84c6.mp3">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1" onclick="openCard()">
+  <div class="polaroid-wrapper">
+    <div class="polaroid-glow"></div>
+    <div class="polaroid-card">
+      <div class="image-placeholder">🤍</div>
+      <div style="margin-top:14px;font-family:'Playfair Display';font-size:0.85rem;color:#aaa;">
+        For Thathatha
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="sisters-chat">
+    <div class="sister">👩🏻‍🦳</div>
+    <div class="sister">👩🏻‍🦰</div>
+    <div class="sister">👩🏻</div>
+  </div>
+
+  <h1 style="font-family:'Playfair Display';color:var(--rose);font-weight:400;">
+    Happy Birthday
+  </h1>
+
+  <div class="cake-section" onclick="openGift()">
+    <div class="cake">
+      <div class="candle-box">
+        <div class="flame" id="flame"></div>
+        <div class="candle-body"></div>
+      </div>
+    </div>
+    <div style="font-size:10px;letter-spacing:2px;margin-top:18px;color:var(--rose);">
+      Blow out to see your surprise
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h1 style="font-family:'Playfair Display';color:var(--rose);font-size:2.8rem;">
+    Surprise!! 🎉
+  </h1>
+  <div class="envelope-btn">💌</div>
+  <div class="credit">
+    With all our love, from your twin sisters 🤍
+  </div>
+</div>
+
+<script>
+const decor = ["✨","🌸","🤍","🌷","🎊","💮"];
+
+function spawnDecor(amount) {
+  for(let i=0;i<amount;i++){
+    const el = document.createElement("div");
+    el.className = "floating";
+    el.innerHTML = decor[Math.floor(Math.random()*decor.length)];
+    el.style.left = Math.random()*100 + "vw";
+    el.style.fontSize = (Math.random()*18+14)+"px";
+    el.style.setProperty("--dur",(Math.random()*5+6)+"s");
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),12000);
+  }
+}
+
+function openCard(){
+  document.getElementById("page1").classList.add("hidden");
+  document.getElementById("page2").classList.add("show");
+  document.getElementById("music").play();
+  spawnDecor(60);
+}
+
+function openGift(){
+  document.getElementById("flame").style.display="none";
+  document.getElementById("page2").classList.add("hidden");
+  document.getElementById("page3").classList.add("show");
+  spawnDecor(120);
+}
+
+spawnDecor(35);
+</script>
+
+</body>
+</html>
